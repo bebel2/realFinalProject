@@ -23,6 +23,4 @@ end
 function [] = termTwo()
 
 end
-function [] = test()
 
-end
