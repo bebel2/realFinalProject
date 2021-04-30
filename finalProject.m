@@ -11,16 +11,18 @@ function [] = finalProject()
     
 
 end
-function [] = aVariable()
+function [] = calculateAVariable()
 
 end
-function [] = bVariable()
+function [] = calculateBVariable()
 
 end
-function [] = termOne()
+function [] = calculatetermOne()
 
 end
-function [] = termTwo()
+function [] = calculatetermTwo()
 
 end
-
+function [] = calculatePressure()
+P = termOne - termTwo
+end
