@@ -13,17 +13,20 @@ function [] = finalProject()
  gui.specificVolumeLabel = uicontrol('style','text','string','volume in m^3/mol','units', 'normalized', 'position', [.35 .14 .10 .10]);
 
 end
-function [] = calculateAVariable()
-
-end
-function [] = calculateBVariable()
-
-end
 function [] = calculateTermOne()
 
+
+
+    function [] = calculateBVariable()
+
+    end
 end
 function [] = calculateTermTwo()
 
+
+    function [] = calculateAVariable()
+
+    end
 end
 function [] = calculatePressure()
 P = calculateTermOne - calculateTermTwo;
