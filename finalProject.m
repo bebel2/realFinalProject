@@ -14,19 +14,18 @@ function [] = finalProject()
  gui.startButton = uicontrol('style', 'pushbutton', 'units', 'normalized', 'string', 'calculate pressure', 'position', [.55 .14 .20 .05]);
 end
 function [] = calculateTermOne()
-
-
-
     function [] = calculateBVariable()
 
     end
+
+
 end
 function [] = calculateTermTwo()
-
-
     function [] = calculateAVariable()
 
     end
+
+
 end
 function [] = calculatePressure()
 P = calculateTermOne - calculateTermTwo;
