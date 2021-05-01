@@ -8,7 +8,7 @@ function [] = finalProject()
  gui.criticalTemperature = uicontrol('style','edit');
  gui.criticalPressure = uicontrol('style','edit');
  gui.specificVolume = uicontrol('style','edit');
-    
+    %edit
 
 end
 function [] = calculateAVariable()
