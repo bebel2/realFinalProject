@@ -26,6 +26,6 @@ function [] = termTwo()
 
 end
 function [] = calculatePressure()
-
+P = termOne - termTwo;
 end
 
