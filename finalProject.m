@@ -12,6 +12,7 @@ function [] = finalProject()
     gui.specificVolume = uicontrol('style','edit','units', 'normalized', 'position', [.35 .04 .10 .05]);
     gui.specificVolumeLabel = uicontrol('style','text','string','volume in m^3/mol','units', 'normalized', 'position', [.35 .14 .10 .10]);
     gui.startButton = uicontrol('style', 'pushbutton', 'units', 'normalized', 'string', 'calculate pressure', 'position', [.55 .14 .20 .05],'callback', {@calculatePressure});
+    
 end
 function [P] = calculatePressure(source,event)
     global gui
@@ -19,7 +20,8 @@ function [P] = calculatePressure(source,event)
     termOne = calculateTermOne();
     termTwo = calculateTermTwo();
     P = termOne - termTwo;
-    fprintf('%s\n',P)
+    text = strcat("P = ", num2str(P));
+    msgbox(text, 'Calculation')
 end
 function [termOne] = calculateTermOne()
     global gui
