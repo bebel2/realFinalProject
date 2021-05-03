@@ -1,7 +1,6 @@
 function [] = finalProject()
     global gui;
-    global R;
-    R = 8.314;
+
  gui.fig = figure('numbertitle', 'off', 'name', 'Van Der Waals Equation');
  gui.equationDisplay = uicontrol('style','text','units','normalized','string','P = (RT / V-b) - (a / V^2)','position',[.35 .6 .20 .15]);
  gui.temperature = uicontrol('style','edit','units', 'normalized', 'position', [.05 .04 .10 .05]);
@@ -17,31 +16,36 @@ end
 function [P] = calculatePressure(source,event)
 global gui
 gui.source = gui;
+termOne = calculateTermOne();
+termTwo = calculateTermTwo();
 P = termOne - termTwo;
+fprintf('%s\n',P)
 end
-function [termOne] = calculateTermOne(source,event)
+function [termOne] = calculateTermOne()
     global gui;
-   global R;
+R = 8.314;
+T = str2double(gui.temperature);
+V = str2double(gui.specificVolume);
+b = calculateBVariable();
     function [b] = calculateBVariable()
         criticalTemp = str2double(gui.criticalTemperature);
         criticalPressure = str2double(gui.criticalPressure);
         b = (R*criticalTemp) / (8*criticalPressure);
     end
-T = str2double(gui.temperature);
-V = str2double(gui.specificVolume);
-
 termOne = (R*T) / (V - b);
 
 end
-function [termTwo] = calculateTermTwo(source,event)
+function [termTwo] = calculateTermTwo()
 global gui;
+R = 8.314;
+A = calculateAVariable();
+V = str2double(gui.specificVolume);
     function [A] = calculateAVariable()
-        global R;
+        
         criticalTemp = str2double(gui.criticalTemperature);
         criticalPressure = str2double(gui.criticalPressure);
             A = (27*R^2*criticalTemp^2) / (64*criticalPressure);
     end
-V = str2double(gui.specificVolume);
 termTwo = A / V^2;
 end
 
