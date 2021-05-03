@@ -17,24 +17,27 @@ end
 function [P] = calculatePressure(source,event)
 global gui
 gui.source = gui;
-P = calculateTermOne - calculateTermTwo;
+P = termOne - termTwo;
 end
-function [] = calculateTermOne(source,event)
-global gui
-    gui.source = gui;
+function [termOne] = calculateTermOne(source,event)
+
+   global R
     function [] = calculateBVariable()
-
+        
     end
+T = str2double(gui.temperature);
+V = str2double(gui.specificVolume);
 
+termOne = (R*T) / (V - b);
 
 end
-function [] = calculateTermTwo(source,event)
-global gui
-    gui.source = gui;
-    function [] = calculateAVariable()
-
+function [termTwo] = calculateTermTwo(source,event)
+    function [A] = calculateAVariable()
+    global R
+    
+    
     end
-
-
+V = str2double(gui.specificVolume);
+termTwo = A / V^2;
 end
 
