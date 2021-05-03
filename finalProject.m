@@ -20,10 +20,12 @@ gui.source = gui;
 P = termOne - termTwo;
 end
 function [termOne] = calculateTermOne(source,event)
-
-   global R
-    function [] = calculateBVariable()
-        
+    global gui;
+   global R;
+    function [b] = calculateBVariable()
+        criticalTemp = str2double(gui.criticalTemperature);
+        criticalPressure = str2double(gui.criticalPressure);
+        b = (R*criticalTemp) / (8*criticalPressure);
     end
 T = str2double(gui.temperature);
 V = str2double(gui.specificVolume);
@@ -32,10 +34,12 @@ termOne = (R*T) / (V - b);
 
 end
 function [termTwo] = calculateTermTwo(source,event)
+global gui;
     function [A] = calculateAVariable()
-    global R
-    
-    
+        global R;
+        criticalTemp = str2double(gui.criticalTemperature);
+        criticalPressure = str2double(gui.criticalPressure);
+            A = (27*R^2*criticalTemp^2) / (64*criticalPressure);
     end
 V = str2double(gui.specificVolume);
 termTwo = A / V^2;
