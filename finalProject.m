@@ -2,7 +2,8 @@ function [] = finalProject()
     global gui;
     global R;
     R = 8.314;
- gui.fig = figure('numbertitle', 'off', 'name', 'Van Der Waals Equation'); 
+ gui.fig = figure('numbertitle', 'off', 'name', 'Van Der Waals Equation');
+ gui.equationDisplay = uicontrol('style','text','units','normalized','string','P = (RT / V-b) - (a / V^2)','position',[.35 .6 .20 .15]);
  gui.temperature = uicontrol('style','edit','units', 'normalized', 'position', [.05 .04 .10 .05]);
  gui.temperatureLabel = uicontrol('style','text','string','temperature in K','units', 'normalized', 'position', [.05 .14 .10 .10]);
  gui.criticalTemperature = uicontrol('style','edit','units', 'normalized', 'position', [.15 .04 .10 .05]);
