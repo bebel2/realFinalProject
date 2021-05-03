@@ -27,7 +27,7 @@ function [termOne] = calculateTermOne()
     global gui
     R = 8.314;
     T = str2double(gui.temperature.String);
-    V = str2num(gui.specificVolume.String);
+    V = str2double(gui.specificVolume.String);
     
     b = calculateBVariable();
     function [b] = calculateBVariable()
