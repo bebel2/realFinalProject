@@ -23,34 +23,36 @@ function [P] = calculatePressure(source,event)
     P = termOne - termTwo;
     text = strcat("P = ", num2str(P));
     msgbox(text, 'Calculation')
-end
-function [termOne] = calculateTermOne()
-    global gui
+
+    function [termOne] = calculateTermOne()
+   
     R = 8.314;
     T = str2double(gui.temperature.String);
     V = str2double(gui.specificVolume.String);
-    
     b = calculateBVariable();
-    function [b] = calculateBVariable()
+    
+        function [b] = calculateBVariable()
+        R = 8.314;
         criticalTemp = str2double(gui.criticalTemperature.String);
         criticalPressure = str2double(gui.criticalPressure.String);
         b = (R*criticalTemp) / (8*criticalPressure);
-    end
-    termOne = (R*T) / (V - b);
+        end
+        termOne = (R*T) / (V - b);
 
-end
-function [termTwo] = calculateTermTwo()
-global gui;
-R = 8.314;
-A = calculateAVariable();
-V = str2double(gui.specificVolume.String);
-    function [A] = calculateAVariable()
-        
-        criticalTemp = str2double(gui.criticalTemperature.String);
-        criticalPressure = str2double(gui.criticalPressure.String);
-            A = (27*R^2*criticalTemp^2) / (64*criticalPressure);
     end
-termTwo = A / V^2;
+    function [termTwo] = calculateTermTwo()
+        
+        R = 8.314;
+        A = calculateAVariable();
+        V = str2double(gui.specificVolume.String);
+            function [A] = calculateAVariable()
+                R = 8.314;
+                criticalTemp = str2double(gui.criticalTemperature.String);
+                criticalPressure = str2double(gui.criticalPressure.String);
+                A = (27*R^2*criticalTemp^2) / (64*criticalPressure);
+            end
+        termTwo = A / V^2;
+    end
 end
 function [A] = calculateAVariable(source,event)
        global gui;
