@@ -12,7 +12,8 @@ function [] = finalProject()
     gui.specificVolume = uicontrol('style','edit','units', 'normalized', 'position', [.35 .04 .10 .05]);
     gui.specificVolumeLabel = uicontrol('style','text','string','volume in m^3/mol','units', 'normalized', 'position', [.35 .14 .10 .10]);
     gui.startButton = uicontrol('style', 'pushbutton', 'units', 'normalized', 'string', 'calculate pressure', 'position', [.55 .14 .20 .05],'callback', {@calculatePressure});
-    
+    gui.startButton = uicontrol('style', 'pushbutton', 'units', 'normalized', 'string', 'calculate a', 'position', [.55 .34 .20 .05],'callback', {@calculateAVariable});
+    gui.startButton = uicontrol('style', 'pushbutton', 'units', 'normalized', 'string', 'calculate b', 'position', [.55 .24 .20 .05],'callback', {@calculateBVariable});
 end
 function [P] = calculatePressure(source,event)
     global gui
@@ -51,4 +52,23 @@ V = str2double(gui.specificVolume.String);
     end
 termTwo = A / V^2;
 end
-
+function [A] = calculateAVariable(source,event)
+       global gui;
+       gui.source = gui;
+       R = 8.314;
+       criticalTemp = str2double(gui.criticalTemperature.String);
+        criticalPressure = str2double(gui.criticalPressure.String);
+           A = (27*R^2*criticalTemp^2) / (64*criticalPressure);
+    text = strcat("a = ", num2str(A));
+    msgbox(text, 'Calculation')
+end
+    function [b] = calculateBVariable(source,event)
+    global gui
+    gui.source = gui;
+    R = 8.314;
+        criticalTemp = str2double(gui.criticalTemperature.String);
+        criticalPressure = str2double(gui.criticalPressure.String);
+        b = (R*criticalTemp) / (8*criticalPressure);
+    text = strcat("b = ", num2str(b));
+    msgbox(text, 'Calculation')
+    end
